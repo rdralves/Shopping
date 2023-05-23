@@ -15,3 +15,11 @@ def produto_detalhe(request):
 
 def institucional(request):
     return render(request, 'empresa.html')
+
+
+def cadastro(request):
+    return render(request, 'cadastro.html')
+
+
+def contato(request):
+    return render(request, 'contato.html')
