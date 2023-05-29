@@ -24,13 +24,10 @@
 
 
                 <!-- Inicio Produtos -->
+                {% for prod in produtos%}
                 {% include 'card_produto.html' %}
-                <!-------->
-                {% include 'card_produto.html' %}
-                <!-------->
-                {% include 'card_produto.html' %}
-                <!-------->
-                {% include 'card_produto.html' %}
+                {% endfor%}
+               
                 <!-- termino produtos-->
             </div>
         </div>

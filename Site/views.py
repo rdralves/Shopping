@@ -5,8 +5,10 @@ from Site.models import Departamento, Produto
 # Create your views here.
 def index(request):
     departamento = Departamento.objects.all()
+    produtotos_em_destaque = Produto.objects.filter(destaque = True)
     context = {
         'departamentos': departamento,
+        'produtos': produtotos_em_destaque,
     }
     return render(request, "index.html", context)
 
@@ -35,8 +37,12 @@ def produto_lista_por_id(request, id):
 
 def produto_detalhe(request, id):
     departamentos = Departamento.objects.all()
+    produto = Produto.objects.get(id=id)
+    produtos_relacionados = Produto.objects.filter(departamento_id = produto.departamento.id)
     context = {
-        'departamentos': departamentos
+        'departamentos': departamentos,
+        'produto': produto,
+        'produtos_relacionados': produtos_relacionados,
     }
     return render(request, 'produto_detalhes.html', context)
 
