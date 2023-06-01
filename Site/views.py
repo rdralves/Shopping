@@ -83,7 +83,7 @@ def cadastro(request):
 
 def contato(request):
     departamentos = Departamento.objects.all()
-
+    mensagem = ''
     if request.method == "POST":
         nome = request.POST['nome']
         telefone = request.POST['telefone']
