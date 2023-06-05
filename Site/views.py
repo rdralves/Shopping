@@ -6,20 +6,20 @@ from Site.models import Departamento, Produto
 
 # Create your views here.
 def index(request):
-    departamento = Departamento.objects.all()
+    
     produtotos_em_destaque = Produto.objects.filter(destaque = True)
     context = {
-        'departamentos': departamento,
+        
         'produtos': produtotos_em_destaque,
     }
     return render(request, "index.html", context)
 
 
 def produto_lista(request):
-    departamento = Departamento.objects.all()
+   
     produtos = Produto.objects.all()
     context = {
-        'departamentos': departamento,
+        
         'produtos': produtos,
         'nome_categoria': 'Todos Produtos',
     }
@@ -30,7 +30,7 @@ def produto_lista_por_id(request, id):
     produtos_por_departamento = Produto.objects.filter(departamento_id =id)
     categoria = departamento.get(id = id).nome
     context = {
-        'departamentos': departamento,
+       
         'produtos': produtos_por_departamento,
         'nome_categoria':categoria
     }
@@ -38,11 +38,11 @@ def produto_lista_por_id(request, id):
 
 
 def produto_detalhe(request, id):
-    departamentos = Departamento.objects.all()
+   
     produto = Produto.objects.get(id=id)
     produtos_relacionados = Produto.objects.filter(departamento_id = produto.departamento.id)
     context = {
-        'departamentos': departamentos,
+        
         'produto': produto,
         'produtos_relacionados': produtos_relacionados,
     }
@@ -50,15 +50,12 @@ def produto_detalhe(request, id):
 
 
 def institucional(request):
-    departamento = Departamento.objects.all()
-    context = {
-        'departamentos': departamento,
-    }
-    return render(request, 'empresa.html', context)
+    
+    return render(request, 'empresa.html')
 
 
 def cadastro(request):
-    departamentos = Departamento.objects.all()
+    
     mensagem = ''' '''
 
     #quando envia o formulario preenchido
@@ -74,7 +71,7 @@ def cadastro(request):
         formulario = ClienteForm()
 
     context = {
-        'departamentos': departamentos,
+        
         'form_cliente' : formulario,
         'mensagem': mensagem
     }
@@ -82,7 +79,7 @@ def cadastro(request):
 
 
 def contato(request):
-    departamentos = Departamento.objects.all()
+    
     mensagem = ""
 
     if request.method == "POST":
@@ -103,7 +100,7 @@ def contato(request):
     formulario = ContatoForm()
 
     context = {
-        'departamentos': departamentos,
+        
         'form_contato' : formulario,
         'mensagem' : mensagem
     }

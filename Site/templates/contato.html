@@ -17,7 +17,7 @@
 <section class="py-5">
     <div class="container">
         {% if mensagem %}
-            <div class="alert alert-success col-md-6 offset-md-3">
+            <div class="alert alert-{% if 'Erro' in mensagem%}danger {% else %}success {%endif %}col-md-6 offset-md-3">
                 {{ mensagem}}
             </div>
         {% endif %}
@@ -26,8 +26,9 @@
             {% csrf_token %}
             <div class="col-md-6 offset-md-3">
                 {{ form_contato|crispy }}
+                <input type="submit" value="Enviar" class="btn btn-success">  
             </div>
-            <input type="submit" value="Enviar" class="btn btn-success">
+           
 
 
         </form>
