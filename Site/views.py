@@ -83,7 +83,8 @@ def cadastro(request):
 
 def contato(request):
     departamentos = Departamento.objects.all()
-    mensagem = ''
+    mensagem = ""
+
     if request.method == "POST":
         nome = request.POST['nome']
         telefone = request.POST['telefone']
@@ -98,8 +99,8 @@ def contato(request):
             mensagem = 'E-mail enviado com sucesso!'
         except:
             mensagem = 'Erro ao enviar e-mail!'
-    else:
-        formulario = ContatoForm()
+    
+    formulario = ContatoForm()
 
     context = {
         'departamentos': departamentos,
